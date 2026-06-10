@@ -268,5 +268,26 @@
     "staged": false,
     "sha256": "331d9a6c4fa43db243bc1edc93296d091708c4e65430cae7da24981e26c0c3fb",
     "original": "Ly8gRGVsZXRlIGEgdGFzayBieSBJRCwgb25seSBpZiBvd25lZCBieSB0aGUgYXV0aGVudGljYXRlZCB1c2VyCnF1ZXJ5ICJ0YXNrcy97aWR9IiB2ZXJiPURFTEVURSB7CiAgYXBpX2dyb3VwID0gIlRhc2tzIgogIGF1dGggPSAidXNlciIKCiAgaW5wdXQgewogICAgLy8gSUQgb2YgdGhlIHRhc2sgdG8gZGVsZXRlCiAgICBpbnQgaWQKICB9CgogIHN0YWNrIHsKICAgIGRiLnF1ZXJ5IHRhc2tzIHsKICAgICAgd2hlcmUgPSAkZGIudGFza3MuaWQgPT0gJGlucHV0LmlkICYmICRkYi50YXNrcy51c2VyX2lkID09ICRhdXRoLmlkCiAgICAgIHJldHVybiA9IHt0eXBlOiAic2luZ2xlIn0KICAgIH0gYXMgJHRhc2sKICAKICAgIHByZWNvbmRpdGlvbiAoJHRhc2sgIT0gbnVsbCkgewogICAgICBlcnJvciA9ICJUYXNrIG5vdCBmb3VuZCIKICAgIH0KICAKICAgIGRiLmRlbCB0YXNrcyB7CiAgICAgIGZpZWxkX25hbWUgPSAiaWQiCiAgICAgIGZpZWxkX3ZhbHVlID0gJGlucHV0LmlkCiAgICB9CiAgfQoKICByZXNwb25zZSA9IHttZXNzYWdlOiAiVGFzayBkZWxldGVkIHN1Y2Nlc3NmdWxseSJ9Cn0="
+  },
+  {
+    "id": 0,
+    "path": "tables/activity_grades.xs",
+    "status": "new",
+    "type": "table",
+    "staged": false
+  },
+  {
+    "id": 0,
+    "path": "apis/activity_grades/api_group.xs",
+    "status": "new",
+    "type": "api_group",
+    "staged": false
+  },
+  {
+    "id": 0,
+    "path": "apis/activity_grades/activity_grades_POST.xs",
+    "status": "new",
+    "type": "api_endpoint",
+    "staged": false
   }
 ]
