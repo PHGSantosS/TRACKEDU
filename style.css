@@ -1,0 +1,65 @@
+/* Hides Streamlit's default top right menu, footer, and deploy button for a cleaner app look */
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+
+/* Custom typography tuning */
+html, body, [class*="css"] {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+/* Style for metrics to look like Figma cards */
+[data-testid="stMetric"] {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+[data-testid="stMetric"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Style for expanders (Tasks) */
+.streamlit-expanderHeader {
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: none !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+div[data-testid="stExpander"] {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+/* Style for tabs */
+button[data-baseweb="tab"] {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+/* Main title styling */
+h1 {
+    font-weight: 700 !important;
+    color: #1f2937 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* Subheader styling */
+h2, h3 {
+    font-weight: 600 !important;
+    color: #374151 !important;
+}
+
+/* Sidebar adjustments */
+[data-testid="stSidebar"] {
+    box-shadow: 2px 0 10px rgba(0,0,0,0.03);
+}
