@@ -1,0 +1,12 @@
+{
+  "instanceName": "x8ki-letl-twmt",
+  "workspaceName": "TRACKEDU",
+  "workspaceId": 162639,
+  "branch": "v1",
+  "paths": {
+    "functions": "functions",
+    "tables": "tables",
+    "apis": "apis",
+    "tasks": "tasks"
+  }
+}
