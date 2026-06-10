@@ -1,11 +1,8 @@
-// List all tasks belonging to the authenticated user, optionally filtered by subject
-// Returns all tasks owned by the authenticated user, optionally filtered by subject_id
-query tasks verb=GET {
-  api_group = "Tasks"
+query "tasks" verb=GET {
+  api_group = "tasks"
   auth = "user"
 
   input {
-    // Optional subject ID to filter tasks by
     int? subject_id
   }
 

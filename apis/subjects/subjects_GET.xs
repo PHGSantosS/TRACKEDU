@@ -1,7 +1,5 @@
-// List all subjects belonging to the authenticated user
-// Returns all subjects owned by the authenticated user
-query subjects verb=GET {
-  api_group = "Subjects"
+query "subjects" verb=GET {
+  api_group = "subjects"
   auth = "user"
 
   input {

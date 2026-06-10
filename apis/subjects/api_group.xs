@@ -1,4 +1,4 @@
-// Endpoints for managing academic subjects owned by the authenticated user
-api_group Subjects {
-  canonical = "-64c3mwi"
+api_group "subjects" {
+  name = "Subjects"
+  description = "CRUD for academic subjects, scoped to the authenticated user"
 }

@@ -1,28 +1,32 @@
-// Delete a subject by ID, only if owned by the authenticated user
 query "subjects/{id}" verb=DELETE {
-  api_group = "Subjects"
+  api_group = "subjects"
   auth = "user"
 
   input {
-    // ID of the subject to delete
     int id
   }
 
   stack {
-    db.query "" {
-      where = $db.subjects.id == $input.id && $db.subjects.user_id == $auth.id
-      return = {type: "single"}
+    db.get subjects {
+      field_name = "id"
+      field_value = $input.id
     } as $subject
-  
+
     precondition ($subject != null) {
-      error = "Subject not found"
+      error_type = "inputerror"
+      error = "Subject not found."
     }
-  
-    db.del "" {
+
+    precondition ($subject.user_id == $auth.id) {
+      error_type = "accessdenied"
+      error = "Access denied."
+    }
+
+    db.del subjects {
       field_name = "id"
       field_value = $input.id
     }
   }
 
-  response = {message: "Subject deleted successfully"}
+  response = {success: true}
 }

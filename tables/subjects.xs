@@ -1,11 +1,8 @@
-// Stores academic subjects owned by a user
 table subjects {
   auth = false
 
   schema {
-    int id {
-      description = "Unique identifier for the subject"
-    }
+    int id
 
     text name filters=trim {
       description = "Name of the academic subject"
@@ -20,9 +17,7 @@ table subjects {
       description = "ID of the user who owns this subject"
     }
 
-    timestamp created_at?=now {
-      description = "Timestamp when the subject was created"
-    }
+    timestamp created_at?=now
   }
 
   index = [

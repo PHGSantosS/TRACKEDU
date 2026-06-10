@@ -1,28 +1,32 @@
-// Delete a task by ID, only if owned by the authenticated user
 query "tasks/{id}" verb=DELETE {
-  api_group = "Tasks"
+  api_group = "tasks"
   auth = "user"
 
   input {
-    // ID of the task to delete
     int id
   }
 
   stack {
-    db.query tasks {
-      where = $db.tasks.id == $input.id && $db.tasks.user_id == $auth.id
-      return = {type: "single"}
+    db.get tasks {
+      field_name = "id"
+      field_value = $input.id
     } as $task
-  
+
     precondition ($task != null) {
-      error = "Task not found"
+      error_type = "inputerror"
+      error = "Task not found."
     }
-  
+
+    precondition ($task.user_id == $auth.id) {
+      error_type = "accessdenied"
+      error = "Access denied."
+    }
+
     db.del tasks {
       field_name = "id"
       field_value = $input.id
     }
   }
 
-  response = {message: "Task deleted successfully"}
+  response = {success: true}
 }

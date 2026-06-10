@@ -1,21 +1,25 @@
-// Get a single subject by ID, only if owned by the authenticated user
 query "subjects/{id}" verb=GET {
-  api_group = "Subjects"
+  api_group = "subjects"
   auth = "user"
 
   input {
-    // ID of the subject to retrieve
     int id
   }
 
   stack {
-    db.query "" {
-      where = $db.subjects.id == $input.id && $db.subjects.user_id == $auth.id
-      return = {type: "single"}
+    db.get subjects {
+      field_name = "id"
+      field_value = $input.id
     } as $subject
-  
+
     precondition ($subject != null) {
-      error = "Subject not found"
+      error_type = "inputerror"
+      error = "Subject not found."
+    }
+
+    precondition ($subject.user_id == $auth.id) {
+      error_type = "accessdenied"
+      error = "Access denied."
     }
   }
 

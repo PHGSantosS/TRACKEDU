@@ -1,36 +1,36 @@
-// Stores tasks associated with a subject, owned by a user
 table tasks {
   auth = false
 
   schema {
-    // Unique identifier for the task
     int id
-  
-    // Title of the task
-    text title filters=trim
-  
-    // Optional detailed description of the task
-    text? description filters=trim
-  
-    // Current status of the task
+
+    text title filters=trim {
+      description = "Title of the task"
+    }
+
+    text? description filters=trim {
+      description = "Optional detailed description"
+    }
+
     enum status?=pending {
       values = ["pending", "in_progress", "done"]
+      description = "Current status of the task"
     }
-  
-    // ID of the subject this task belongs to
+
     int subject_id {
       table = "subjects"
+      description = "Subject this task belongs to"
     }
-  
-    // ID of the user who owns this task
+
     int user_id {
       table = "user"
+      description = "Owner of this task"
     }
-  
-    // Optional deadline for the task
-    timestamp? due_date?
-  
-    // Timestamp when the task was created
+
+    timestamp? due_date {
+      description = "Optional deadline"
+    }
+
     timestamp created_at?=now
   }
 

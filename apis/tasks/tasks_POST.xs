@@ -1,44 +1,43 @@
-// Create a new task for the authenticated user linked to a subject
-query tasks verb=POST {
-  api_group = "Tasks"
+query "tasks" verb=POST {
+  api_group = "tasks"
   auth = "user"
 
   input {
-    // Title of the task
     text title filters=trim
-  
-    // Optional description of the task
     text? description filters=trim
-  
-    // ID of the subject this task belongs to
     int subject_id
-  
-    // Optional deadline for the task
     timestamp? due_date
+    text? status
   }
 
   stack {
-    // Verify the subject exists and belongs to the authenticated user
-    db.query subjects {
-      where = $db.subjects.id == $input.subject_id && $db.subjects.user_id == $auth.id
-      return = {type: "single"}
+    db.get subjects {
+      field_name = "id"
+      field_value = $input.subject_id
     } as $subject
-  
+
     precondition ($subject != null) {
-      error = "Subject not found"
+      error_type = "inputerror"
+      error = "Subject not found."
     }
-  
+
+    precondition ($subject.user_id == $auth.id) {
+      error_type = "accessdenied"
+      error = "You do not own this subject."
+    }
+
     db.add tasks {
       data = {
         title      : $input.title
         description: $input.description
+        status     : $input.status || "pending"
         subject_id : $input.subject_id
         user_id    : $auth.id
         due_date   : $input.due_date
-        status     : "pending"
+        created_at : now
       }
-    } as $new_task
+    } as $task
   }
 
-  response = $new_task
+  response = $task
 }

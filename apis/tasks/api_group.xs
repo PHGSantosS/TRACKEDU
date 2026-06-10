@@ -1,4 +1,4 @@
-// Endpoints for managing tasks linked to subjects, owned by the authenticated user
-api_group Tasks {
-  canonical = "8G_3UH3c"
+api_group "tasks" {
+  name = "Tasks"
+  description = "CRUD for academic tasks (tarefas), scoped to the authenticated user"
 }

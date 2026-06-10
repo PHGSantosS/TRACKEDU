@@ -1,14 +1,9 @@
-// Create a new subject for the authenticated user
-// Creates a new subject owned by the authenticated user
-query subjects verb=POST {
-  api_group = "Subjects"
+query "subjects" verb=POST {
+  api_group = "subjects"
   auth = "user"
 
   input {
-    // Name of the subject
     text name filters=trim
-  
-    // Optional description of the subject
     text? description filters=trim
   }
 
@@ -18,9 +13,10 @@ query subjects verb=POST {
         name       : $input.name
         description: $input.description
         user_id    : $auth.id
+        created_at : now
       }
-    } as $new_subject
+    } as $subject
   }
 
-  response = $new_subject
+  response = $subject
 }
